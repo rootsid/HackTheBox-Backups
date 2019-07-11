@@ -1,0 +1,115 @@
+TITLE: Intel Chipset Support for Microsoft Windows
+
+VERSION: 8.4.0.1016 Rev. A
+DESCRIPTION:
+This package installs Intel Chipset support on the supported desktop models and
+operating systems.
+
+PURPOSE: Routine
+SOFTPAQ NUMBER: SP38488
+SUPERSEDES: SP36714
+EFFECTIVE DATE: April 7, 2011
+CATEGORY: Driver - Chipset
+SSM SUPPORTED: No
+
+PRODUCT TYPE(S):
+Desktops
+
+HARDWARE PRODUCT MODEL(S):
+Compaq dx1000 Microtower PC: All Models
+HP ap5000 All-in-One Point of Sale System: All Models
+HP Compaq dc5700 Microtower PC: All Models
+HP Compaq dc5700 Small Form Factor PC: All Models
+HP Compaq dc5800 Microtower PC: All Models
+HP Compaq dc5800 Small Form Factor PC: All Models
+HP Compaq dc7600 Convertible Minitower PC: All Models
+HP Compaq dc7600 Small Form Factor PC: All Models
+HP Compaq dc7600 Ultra-slim Desktop PC: All Models
+HP Compaq dc7608 convertible minitower: All Models
+HP Compaq dc7608 small form factor: All Models
+HP Compaq dc7700 Convertible Minitower PC: All Models
+HP Compaq dc7700 Small Form Factor PC: All Models
+HP Compaq dc7700 Ultra-Slim Desktop PC: All Models
+HP Compaq dc7800 Convertible Minitower PC: All Models
+HP Compaq dc7800 Small Form Factor PC: All Models
+HP Compaq dc7800 Ultra-Slim Desktop PC: All Models
+HP Compaq dx2300 Microtower PC: All Models
+HP Compaq dx2308 Microtower PC: All Models
+HP Compaq dx2310 Microtower PC: All Models
+HP Compaq dx2318 Microtower PC: All Models
+HP Compaq dx2390 Microtower PC: All Models
+HP Compaq dx2400 Microtower PC: All Models
+HP Compaq dx2420 Microtower PC: All Models
+HP Compaq dx2710 Microtower PC: All Models
+HP Compaq dx2710 Small Form Factor PC: All Models
+HP Compaq dx2718 Microtower PC: All Models
+HP Compaq dx7200 microtower: All Models
+HP Compaq dx7200 Slim Tower PC: All Models
+HP Compaq dx7208 Microtower PC: All Models
+HP Compaq dx7300 Microtower PC: All Models
+HP Compaq dx7300 Slim Tower PC: All Models
+HP Compaq dx7400 Microtower PC: All Models
+HP Compaq dx7400 Small Form Factor: All Models
+HP Compaq dx7408 Microtower PC: All Models
+HP Pro 2000 MT Business PC: All Models
+HP Pro 2080 MT Business PC: All Models
+HP rp3000 Point of Sale: All Models
+HP rp5700 Business Desktop: All Models
+HP rp5700 Point of Sale System: All Models
+
+SOFTWARE PRODUCT(S):
+None
+
+OPERATING SYSTEM(S):
+Microsoft Windows 2000
+Microsoft Windows Embedded POSReady
+Microsoft Windows Server 2003
+Microsoft Windows Vista Business 32 Edition
+Microsoft Windows Vista Business 64 Edition
+Microsoft Windows Vista Enterprise 32 Edition
+Microsoft Windows Vista Enterprise 64 Edition
+Microsoft Windows Vista Home Basic 32 Edition
+Microsoft Windows Vista Home Basic 64 Edition
+Microsoft Windows Vista Home Premium 32 Edition
+Microsoft Windows Vista Home Premium 64 Edition
+Microsoft Windows Vista Ultimate 32 Edition
+Microsoft Windows Vista Ultimate 64 Edition
+Microsoft Windows XP Home Edition
+Microsoft Windows XP Professional
+Microsoft Windows XP Professional x64 Edition
+
+LANGUAGE(S):
+Global
+
+ENHANCEMENTS:
+- .INF files have been updated to add new desktop models.
+
+PREREQUISITES:
+Requires one of the following operating systems:
+
+- Microsoft Windows 2000 and Service packs
+- Microsoft Windows XP and Service packs
+- Microsoft Windows XP Professional x64 Edition
+- Microsoft Windows Server 2003 and Service packs
+- Microsoft Windows Server 2003 x64 Edition
+- Microsoft Windows Vista
+
+INSTALLATION INSTRUCTIONS:
+NOTE: To install the software in this SoftPaq, you must be logged in with
+Administrator privileges.
+
+1. Download the file by clicking the "Download" or "Obtain Software" button and
+saving the file to a folder on your hard drive (make a note of the folder where
+the downloaded file is saved).
+
+2. Double-click the downloaded file and follow the on-screen instructions to
+unpack the files to C:\SWSETUP\SP38488, or another directory of your choice.
+
+3. After unpacking the files, the setup program runs automatically. You may
+either continue to install the chipset drivers, or cancel the installation.
+
+NOTE: After the files have been unpacked, the file downloaded in Step 1 can be
+deleted, if desired.
+
+
+Copyright (c) 2008-2011 Hewlett-Packard Development Company, L.P. 
