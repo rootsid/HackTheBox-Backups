@@ -1,0 +1,28 @@
+nmap -p- -T4 -A 10.10.10.102
+
+enum4linux 10.10.10.102
+
+server got ftp 21
+ssh 22
+web 80
+
+on 80 after robots.txt we got drupel
+
+on ftp access we got anonymous
+
+>ftp 10.10.10.102
+>anonymous
+
+//ls in ftp
+//for all hidden files ls -a messages directory and .drupal.txt.enc file is there 
+//get .drupal.txt.enc
+
+//Through script go-openssl-bruteforce 
+
+> ./openssl-brute -file .drupal.txt.enc -wordlist /root/Desktop/rockyou.txt
+
+//we got the password from there PencilKeyboardScanner123
+
+Now login the portal through user admin
+
+and go to modules enable the php upload and then go to post article and paste the php shell there to spawn it. change the dir and get the user.txt

