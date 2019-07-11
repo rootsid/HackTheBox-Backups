@@ -1,0 +1,5 @@
+[root@beep ~]# cat root.txt
+d88e006123842106982acce0aaf453f0
+
+[root@beep fanis]# cat user.txt
+aeff3def0c765c2677b94715cffa73ac

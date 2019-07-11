@@ -1,0 +1,56 @@
+====================================================
+Gobuster v2.0.1              OJ Reeves (@TheColonial)
+=====================================================
+[+] Mode         : dir
+[+] Url/Domain   : http://10.10.10.140/
+[+] Threads      : 10
+[+] Wordlist     : /usr/share/wordlists/dirb/common.txt
+[+] Status codes : 200,204,301,302,307,403
+[+] Timeout      : 10s
+=====================================================
+2019/06/15 01:44:13 Starting gobuster
+=====================================================
+/.hta (Status: 403)
+/.htaccess (Status: 403)
+/.htpasswd (Status: 403)
+/app (Status: 301)
+/downloader (Status: 301)
+/errors (Status: 301)
+/favicon.ico (Status: 200)
+/includes (Status: 301)
+/js (Status: 301)
+/lib (Status: 301)
+/media (Status: 301)
+/pkginfo (Status: 301)
+/server-status (Status: 403)
+/shell (Status: 301)
+/skin (Status: 301)
+/var (Status: 301)
+=====================================================
+2019/06/15 01:45:25 Finished
+=====================================================
+Dirb
+=================
+----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Sat Jun 15 01:46:08 2019
+URL_BASE: http://10.10.10.137/
+WORDLIST_FILES: /usr/share/wordlists/dirb/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.10.137/ ----
+==> DIRECTORY: http://10.10.10.137/css/                                                                                            
++ http://10.10.10.137/index.html (CODE:200|SIZE:3138)                                                                              
+==> DIRECTORY: http://10.10.10.137/js/                                                                                             
++ http://10.10.10.137/LICENSE (CODE:200|SIZE:1093)                                                                                 
++ http://10.10.10.137/management (CODE:401|SIZE:381)                                                                               
+==> DIRECTORY: http://10.10.10.137/member/                                                                                         
+==> DIRECTORY: http://10.10.10.137/vendor/
+
+

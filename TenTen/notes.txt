@@ -1,0 +1,58 @@
+TenTen Notes
+--------------------
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 ec:f7:9d:38:0c:47:6f:f0:13:0f:b9:3b:d4:d6:e3:11 (RSA)
+|   256 cc:fe:2d:e2:7f:ef:4d:41:ae:39:0e:91:ed:7e:9d:e7 (ECDSA)
+|_  256 8d:b5:83:18:c0:7c:5d:3d:38:df:4b:e1:a4:82:8a:07 (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-generator: WordPress 4.7.3
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Job Portal &#8211; Just another WordPress site
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: Linux 3.10 - 4.11 (92%), Linux 3.12 (92%), Linux 3.13 (92%), Linux 3.13 or 4.2 (92%), Linux 3.16 (92%), Linux 3.16 - 4.6 (92%), Linux 3.2 - 4.9 (92%), Linux 3.8 - 3.11 (92%), Linux 4.2 (92%), Linux 4.4 (92%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT       ADDRESS
+1   135.67 ms 10.10.14.1
+2   135.73 ms 10.10.10.10
+
+
+on port 80 wordpress website is running, so time for wpscan
+after wpscan there is one plugin job manager which had vulnerbility to enumerate the files in uploaded section within the time range so specified the time in python exploit
+
+after that almost got nothinng there were no files of pdf,doc, so tried with jpg,jpeg.png got a hit then
+
+got hackeraccesgranted.jpg from it.
+
+nothing else was there image got left only then tried to steghide and got the id_rsa of ssh
+
+then converted the ssh id_rsa to crack the password to ssh2john
+
+after getting it
+
+john id_john --wordlist <wordlist file>
+
+immediately got the password superpassword 
+
+then tried to login in ssh with root but failed to login mayber passis worng or either usernme is wrong
+
+wpscan --url http://10.10.10.10. -e u
+got the takis as user
+
+ssh-i id_rsa takeis@10.10.10.10
+pass superpassword
+
+login successfull
+
+after logging in there is one bash file which is executing commands so directly spawned the bash shell
+
+got instant root
+
+user.txt e5c7ed3b89e73049c04c432fc8686f31
+root.txt f9f7291e39a9a2a011b1425c3e08f603
+
+
