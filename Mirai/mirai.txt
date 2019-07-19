@@ -1,0 +1,88 @@
+Nmap scan report for 10.10.10.48
+Host is up (0.14s latency).
+Not shown: 65529 closed ports
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     OpenSSH 6.7p1 Debian 5+deb8u3 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 aa:ef:5c:e0:8e:86:97:82:47:ff:4a:e5:40:18:90:c5 (DSA)
+|   2048 e8:c1:9d:c5:43:ab:fe:61:23:3b:d7:e4:af:9b:74:18 (RSA)
+|   256 b6:a0:78:38:d0:c8:10:94:8b:44:b2:ea:a0:17:42:2b (ECDSA)
+|_  256 4d:68:40:f7:20:c4:e5:52:80:7a:44:38:b8:a2:a7:52 (ED25519)
+53/tcp    open  domain  dnsmasq 2.76
+| dns-nsid: 
+|_  bind.version: dnsmasq-2.76
+80/tcp    open  http    lighttpd 1.4.35
+|_http-server-header: lighttpd/1.4.35
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+1043/tcp  open  upnp    Platinum UPnP 1.0.5.13 (UPnP/1.0 DLNADOC/1.50)
+32400/tcp open  http    Plex Media Server httpd
+| http-auth: 
+| HTTP/1.1 401 Unauthorized\x0D
+|_  Server returned status 401 but no WWW-Authenticate header.
+|_http-cors: HEAD GET POST PUT DELETE OPTIONS
+|_http-title: Unauthorized
+32469/tcp open  upnp    Platinum UPnP 1.0.5.13 (UPnP/1.0 DLNADOC/1.50)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.70%E=4%D=7/19%OT=22%CT=1%CU=39349%PV=Y%DS=2%DC=T%G=Y%TM=5D32011
+OS:3%P=x86_64-pc-linux-gnu)SEQ(SP=100%GCD=1%ISR=106%TI=Z%CI=I%II=I%TS=8)OPS
+OS:(O1=M54DST11NW6%O2=M54DST11NW6%O3=M54DNNT11NW6%O4=M54DST11NW6%O5=M54DST1
+OS:1NW6%O6=M54DST11)WIN(W1=7120%W2=7120%W3=7120%W4=7120%W5=7120%W6=7120)ECN
+OS:(R=Y%DF=Y%T=40%W=7210%O=M54DNNSNW6%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=A
+OS:S%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R
+OS:=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F
+OS:=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%
+OS:T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD
+OS:=S)
+
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 8080/tcp)
+HOP RTT       ADDRESS
+1   148.84 ms 10.10.14.1
+2   148.92 ms 10.10.10.48
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 695.19 seconds
+
+
+port 80 is open and 53 as well checked for zone transfer but nothing is there
+
+root@root:~/Downloads/HTB/VIP/Mirai# dig @10.10.10.48 pi.hole
+
+; <<>> DiG 9.11.5-P4-5.1-Debian <<>> @10.10.10.48 pi.hole
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 2988
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;pi.hole.                       IN      A
+
+;; ANSWER SECTION:
+pi.hole.                300     IN      A       192.168.204.129
+
+;; Query time: 140 msec
+;; SERVER: 10.10.10.48#53(10.10.10.48)
+;; WHEN: Sat Jul 20 00:33:34 IST 2019
+;; MSG SIZE  rcvd: 52
+
+
+so here's no go but mirai is a botnet for default passwords
+
+ssh default password worked for raspberry pi
+
+got the user flag straight away.
+
+then for root flag there is another hidden flag in media usb
+
+but file is deleted
+
+got the flag from just simple forensics
+
+root@raspberrypi:/media/usbstick# strings /dev/sdb
+
