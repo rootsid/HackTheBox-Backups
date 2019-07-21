@@ -86,3 +86,10 @@ got the flag from just simple forensics
 
 root@raspberrypi:/media/usbstick# strings /dev/sdb
 
+for recovering the file
+
+ssh pi@10.10.10.48 "sudo dcfldd if=/dev/sdb | gzip -1 -" | dcfldd of=pi.dd.gz
+
+testdisk
+binwalk -Me
+hexdump -C
