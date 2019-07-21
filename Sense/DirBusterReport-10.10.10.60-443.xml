@@ -1,0 +1,30 @@
+<?xml version="1.0>
+<DirBusterResults>
+<Result type="Dir" path="/" responseCode="200" />
+<Result type="File" path="/index.html" responseCode="200" />
+<Result type="File" path="/index.php" responseCode="200" />
+<Result type="File" path="/help.php" responseCode="200" />
+<Result type="File" path="/stats.php" responseCode="200" />
+<Result type="File" path="/themes/pfsense_ng/javascript/niftyjsCode.js" responseCode="200" />
+<Result type="File" path="/csrf/csrf-magic.js" responseCode="200" />
+<Result type="File" path="/edit.php" responseCode="200" />
+<Result type="File" path="/javascript/jquery.js" responseCode="200" />
+<Result type="File" path="/system.php" responseCode="200" />
+<Result type="File" path="/license.php" responseCode="200" />
+<Result type="File" path="/status.php" responseCode="200" />
+<Result type="File" path="/changelog.txt" responseCode="200" />
+<Result type="File" path="/exec.php" responseCode="200" />
+<Result type="Dir" path="/tree/" responseCode="200" />
+<Result type="File" path="/graph.php" responseCode="200" />
+<Result type="File" path="/tree/index.html" responseCode="200" />
+<Result type="File" path="/tree/tree.js" responseCode="200" />
+<Result type="File" path="/wizard.php" responseCode="200" />
+<Result type="File" path="/pkg.php" responseCode="200" />
+<Result type="Dir" path="/installer/" responseCode="302" />
+<Result type="File" path="/installer/index.php" responseCode="302" />
+<Result type="File" path="/installer/installer.php" responseCode="200" />
+<Result type="File" path="/xmlrpc.php" responseCode="200" />
+<Result type="File" path="/reboot.php" responseCode="200" />
+<Result type="File" path="/interfaces.php" responseCode="200" />
+<Result type="File" path="/system-users.txt" responseCode="200" />
+</DirBusterResults>
