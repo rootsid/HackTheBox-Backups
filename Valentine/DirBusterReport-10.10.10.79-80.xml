@@ -1,0 +1,17 @@
+<?xml version="1.0>
+<DirBusterResults>
+<Result type="Dir" path="/" responseCode="200" />
+<Result type="Dir" path="/index/" responseCode="200" />
+<Result type="Dir" path="/doc/" responseCode="403" />
+<Result type="Dir" path="/cgi-bin/" responseCode="403" />
+<Result type="Dir" path="/icons/" responseCode="403" />
+<Result type="File" path="/index.php" responseCode="200" />
+<Result type="Dir" path="/dev/" responseCode="200" />
+<Result type="File" path="/dev/hype_key" responseCode="200" />
+<Result type="File" path="/dev/notes.txt" responseCode="200" />
+<Result type="Dir" path="/icons/small/" responseCode="403" />
+<Result type="Dir" path="/encode/" responseCode="200" />
+<Result type="File" path="/encode.php" responseCode="200" />
+<Result type="Dir" path="/decode/" responseCode="200" />
+<Result type="File" path="/decode.php" responseCode="200" />
+</DirBusterResults>
