@@ -1,0 +1,100 @@
+Sat Nov 30 23:10:32 2019 OpenVPN 2.4.7 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on Feb 20 2019
+Sat Nov 30 23:10:32 2019 library versions: OpenSSL 1.1.1d  10 Sep 2019, LZO 2.10
+Sat Nov 30 23:10:32 2019 Outgoing Control Channel Authentication: Using 256 bit message hash 'SHA256' for HMAC authentication
+Sat Nov 30 23:10:32 2019 Incoming Control Channel Authentication: Using 256 bit message hash 'SHA256' for HMAC authentication
+Sat Nov 30 23:10:32 2019 TCP/UDP: Preserving recently used remote address: [AF_INET]5.44.235.19:1337
+Sat Nov 30 23:10:32 2019 Socket Buffers: R=[212992->212992] S=[212992->212992]
+Sat Nov 30 23:10:32 2019 UDP link local: (not bound)
+Sat Nov 30 23:10:32 2019 UDP link remote: [AF_INET]5.44.235.19:1337
+Sat Nov 30 23:10:33 2019 TLS: Initial packet from [AF_INET]5.44.235.19:1337, sid=75dcab07 d061d6cf
+Sat Nov 30 23:10:33 2019 VERIFY OK: depth=1, C=UK, ST=City, L=London, O=HackTheBox, CN=HackTheBox CA, name=htb, emailAddress=info@hackthebox.eu
+Sat Nov 30 23:10:33 2019 VERIFY KU OK
+Sat Nov 30 23:10:33 2019 Validating certificate extended key usage
+Sat Nov 30 23:10:33 2019 ++ Certificate has EKU (str) TLS Web Server Authentication, expects TLS Web Server Authentication
+Sat Nov 30 23:10:33 2019 VERIFY EKU OK
+Sat Nov 30 23:10:33 2019 VERIFY OK: depth=0, C=UK, ST=City, L=London, O=HackTheBox, CN=htb, name=htb, emailAddress=info@hackthebox.eu
+Sat Nov 30 23:10:33 2019 Control Channel: TLSv1.2, cipher TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384, 2048 bit RSA
+Sat Nov 30 23:10:33 2019 [htb] Peer Connection Initiated with [AF_INET]5.44.235.19:1337
+Sat Nov 30 23:10:34 2019 SENT CONTROL [htb]: 'PUSH_REQUEST' (status=1)
+Sat Nov 30 23:10:34 2019 PUSH: Received control message: 'PUSH_REPLY,route 10.10.10.0 255.255.255.0,route-ipv6 dead:beef::/64,tun-ipv6,route-gateway 10.10.14.1,topology subnet,ping 10,ping-restart 120,ifconfig-ipv6 dead:beef:2::1010/64 dead:beef:2::1,ifconfig 10.10.14.18 255.255.254.0,peer-id 5,cipher AES-256-GCM'
+Sat Nov 30 23:10:34 2019 OPTIONS IMPORT: timers and/or timeouts modified
+Sat Nov 30 23:10:34 2019 OPTIONS IMPORT: --ifconfig/up options modified
+Sat Nov 30 23:10:34 2019 OPTIONS IMPORT: route options modified
+Sat Nov 30 23:10:34 2019 OPTIONS IMPORT: route-related options modified
+Sat Nov 30 23:10:34 2019 OPTIONS IMPORT: peer-id set
+Sat Nov 30 23:10:34 2019 OPTIONS IMPORT: adjusting link_mtu to 1625
+Sat Nov 30 23:10:34 2019 OPTIONS IMPORT: data channel crypto options modified
+Sat Nov 30 23:10:34 2019 Data Channel: using negotiated cipher 'AES-256-GCM'
+Sat Nov 30 23:10:34 2019 Outgoing Data Channel: Cipher 'AES-256-GCM' initialized with 256 bit key
+Sat Nov 30 23:10:34 2019 Incoming Data Channel: Cipher 'AES-256-GCM' initialized with 256 bit key
+Sat Nov 30 23:10:34 2019 ROUTE_GATEWAY 192.168.0.1/255.255.255.0 IFACE=eth0 HWADDR=40:8d:5c:7b:8c:c8
+Sat Nov 30 23:10:34 2019 GDG6: remote_host_ipv6=n/a
+Sat Nov 30 23:10:34 2019 ROUTE6: default_gateway=UNDEF
+Sat Nov 30 23:10:34 2019 TUN/TAP device tun0 opened
+Sat Nov 30 23:10:34 2019 TUN/TAP TX queue length set to 100
+Sat Nov 30 23:10:34 2019 /sbin/ip link set dev tun0 up mtu 1500
+Sat Nov 30 23:10:34 2019 /sbin/ip addr add dev tun0 10.10.14.18/23 broadcast 10.10.15.255
+Sat Nov 30 23:10:34 2019 /sbin/ip -6 addr add dead:beef:2::1010/64 dev tun0
+Sat Nov 30 23:10:34 2019 /sbin/ip route add 10.10.10.0/24 via 10.10.14.1
+Sat Nov 30 23:10:34 2019 add_route_ipv6(dead:beef::/64 -> dead:beef:2::1 metric -1) dev tun0
+Sat Nov 30 23:10:34 2019 /sbin/ip -6 route add dead:beef::/64 dev tun0
+Sat Nov 30 23:10:34 2019 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Sat Nov 30 23:10:34 2019 Initialization Sequence Completed
+Sat Nov 30 23:10:35 2019 event_wait : Interrupted system call (code=4)
+Sat Nov 30 23:10:35 2019 /sbin/ip route del 10.10.10.0/24
+Sat Nov 30 23:10:35 2019 delete_route_ipv6(dead:beef::/64)
+Sat Nov 30 23:10:35 2019 /sbin/ip -6 route del dead:beef::/64 dev tun0
+Sat Nov 30 23:10:35 2019 Closing TUN/TAP interface
+Sat Nov 30 23:10:35 2019 /sbin/ip addr del dev tun0 10.10.14.18/23
+Sat Nov 30 23:10:35 2019 /sbin/ip -6 addr del dead:beef:2::1010/64 dev tun0
+Sat Nov 30 23:10:35 2019 SIGINT[hard,] received, process exiting
+Sat Nov 30 23:17:57 2019 OpenVPN 2.4.7 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on Feb 20 2019
+Sat Nov 30 23:17:57 2019 library versions: OpenSSL 1.1.1d  10 Sep 2019, LZO 2.10
+Sat Nov 30 23:17:57 2019 Outgoing Control Channel Authentication: Using 256 bit message hash 'SHA256' for HMAC authentication
+Sat Nov 30 23:17:57 2019 Incoming Control Channel Authentication: Using 256 bit message hash 'SHA256' for HMAC authentication
+Sat Nov 30 23:17:57 2019 TCP/UDP: Preserving recently used remote address: [AF_INET]5.44.235.19:1337
+Sat Nov 30 23:17:57 2019 Socket Buffers: R=[212992->212992] S=[212992->212992]
+Sat Nov 30 23:17:57 2019 UDP link local: (not bound)
+Sat Nov 30 23:17:57 2019 UDP link remote: [AF_INET]5.44.235.19:1337
+Sat Nov 30 23:17:57 2019 TLS: Initial packet from [AF_INET]5.44.235.19:1337, sid=959ff130 67d577c3
+Sat Nov 30 23:17:58 2019 VERIFY OK: depth=1, C=UK, ST=City, L=London, O=HackTheBox, CN=HackTheBox CA, name=htb, emailAddress=info@hackthebox.eu
+Sat Nov 30 23:17:58 2019 VERIFY KU OK
+Sat Nov 30 23:17:58 2019 Validating certificate extended key usage
+Sat Nov 30 23:17:58 2019 ++ Certificate has EKU (str) TLS Web Server Authentication, expects TLS Web Server Authentication
+Sat Nov 30 23:17:58 2019 VERIFY EKU OK
+Sat Nov 30 23:17:58 2019 VERIFY OK: depth=0, C=UK, ST=City, L=London, O=HackTheBox, CN=htb, name=htb, emailAddress=info@hackthebox.eu
+Sat Nov 30 23:17:58 2019 Control Channel: TLSv1.2, cipher TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384, 2048 bit RSA
+Sat Nov 30 23:17:58 2019 [htb] Peer Connection Initiated with [AF_INET]5.44.235.19:1337
+Sat Nov 30 23:17:59 2019 SENT CONTROL [htb]: 'PUSH_REQUEST' (status=1)
+Sat Nov 30 23:17:59 2019 PUSH: Received control message: 'PUSH_REPLY,route 10.10.10.0 255.255.255.0,route-ipv6 dead:beef::/64,tun-ipv6,route-gateway 10.10.14.1,topology subnet,ping 10,ping-restart 120,ifconfig-ipv6 dead:beef:2::1010/64 dead:beef:2::1,ifconfig 10.10.14.18 255.255.254.0,peer-id 5,cipher AES-256-GCM'
+Sat Nov 30 23:17:59 2019 OPTIONS IMPORT: timers and/or timeouts modified
+Sat Nov 30 23:17:59 2019 OPTIONS IMPORT: --ifconfig/up options modified
+Sat Nov 30 23:17:59 2019 OPTIONS IMPORT: route options modified
+Sat Nov 30 23:17:59 2019 OPTIONS IMPORT: route-related options modified
+Sat Nov 30 23:17:59 2019 OPTIONS IMPORT: peer-id set
+Sat Nov 30 23:17:59 2019 OPTIONS IMPORT: adjusting link_mtu to 1625
+Sat Nov 30 23:17:59 2019 OPTIONS IMPORT: data channel crypto options modified
+Sat Nov 30 23:17:59 2019 Data Channel: using negotiated cipher 'AES-256-GCM'
+Sat Nov 30 23:17:59 2019 Outgoing Data Channel: Cipher 'AES-256-GCM' initialized with 256 bit key
+Sat Nov 30 23:17:59 2019 Incoming Data Channel: Cipher 'AES-256-GCM' initialized with 256 bit key
+Sat Nov 30 23:17:59 2019 ROUTE_GATEWAY 192.168.0.1/255.255.255.0 IFACE=eth0 HWADDR=40:8d:5c:7b:8c:c8
+Sat Nov 30 23:17:59 2019 GDG6: remote_host_ipv6=n/a
+Sat Nov 30 23:17:59 2019 ROUTE6: default_gateway=UNDEF
+Sat Nov 30 23:17:59 2019 TUN/TAP device tun0 opened
+Sat Nov 30 23:17:59 2019 TUN/TAP TX queue length set to 100
+Sat Nov 30 23:17:59 2019 /sbin/ip link set dev tun0 up mtu 1500
+Sat Nov 30 23:17:59 2019 /sbin/ip addr add dev tun0 10.10.14.18/23 broadcast 10.10.15.255
+Sat Nov 30 23:17:59 2019 /sbin/ip -6 addr add dead:beef:2::1010/64 dev tun0
+Sat Nov 30 23:17:59 2019 /sbin/ip route add 10.10.10.0/24 via 10.10.14.1
+Sat Nov 30 23:17:59 2019 add_route_ipv6(dead:beef::/64 -> dead:beef:2::1 metric -1) dev tun0
+Sat Nov 30 23:17:59 2019 /sbin/ip -6 route add dead:beef::/64 dev tun0
+Sat Nov 30 23:17:59 2019 WARNING: this configuration may cache passwords in memory -- use the auth-nocache option to prevent this
+Sat Nov 30 23:17:59 2019 Initialization Sequence Completed
+Sat Nov 30 23:18:00 2019 event_wait : Interrupted system call (code=4)
+Sat Nov 30 23:18:00 2019 /sbin/ip route del 10.10.10.0/24
+Sat Nov 30 23:18:00 2019 delete_route_ipv6(dead:beef::/64)
+Sat Nov 30 23:18:00 2019 /sbin/ip -6 route del dead:beef::/64 dev tun0
+Sat Nov 30 23:18:00 2019 Closing TUN/TAP interface
+Sat Nov 30 23:18:00 2019 /sbin/ip addr del dev tun0 10.10.14.18/23
+Sat Nov 30 23:18:00 2019 /sbin/ip -6 addr del dead:beef:2::1010/64 dev tun0
+Sat Nov 30 23:18:00 2019 SIGINT[hard,] received, process exiting

